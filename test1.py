@@ -56,6 +56,12 @@ print(image_url)
 category=soup.findAll("a")[3]
 print(category.text)
 
+product_page= soup.findAll("h3")
+#print(product_page)
+
+prod_url = soup.select("h3")
+for link in prod_url:
+    print(link.a["href"])
 
 
 
