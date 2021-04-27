@@ -5,6 +5,8 @@ url = 'http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html'
 response = requests.get(url)
 
 
+
+
 allinfos = {
 			"UPC" : "universal_ product_code",
 			"Prix (taxe excl.)" : "price_excluding_tax",
@@ -16,6 +18,8 @@ allinfos = {
 
 if response.ok:
 	soup = BeautifulSoup(response.text, 'html.parser')
+	title = soup.find('title')
+	print(title.text)
 	tds = soup.findAll("tr")
 	for td in tds:
 		info = td.find("th")
@@ -43,8 +47,19 @@ if response.ok:
 	
 
 
+description = soup.find("meta", {"name":"description"})
+print(description)
 
-	
+image_url = soup.find("img")
+print(image_url)
+
+category=soup.findAll("a")[3]
+print(category.text)
+
+
+
+
+
 
 
 
