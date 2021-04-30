@@ -5,8 +5,6 @@ url = 'http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html'
 response = requests.get(url)
 
 
-
-
 allinfos = {
 			"UPC" : "universal_ product_code",
 			"Prix (taxe excl.)" : "price_excluding_tax",
@@ -29,7 +27,7 @@ if response.ok:
 		
 	
 
-	if info.text == "UPC":
+	if allinfos == "UPC":
 		allinfos["universal_ product_code"] = info_rep.text
 		print(allinfos["universal_ product_code"])
 	if info.text == "Prix (taxe excl.)":
@@ -44,7 +42,6 @@ if response.ok:
 	if info.text == "Nombre d'avis":
 		allinfos["review_rating"] = info_rep.text
 		print(allinfos["review_rating"])
-	
 
 
 description = soup.find("meta", {"name":"description"})
@@ -56,8 +53,7 @@ print(image_url)
 category=soup.findAll("a")[3]
 print(category.text)
 
-product_page= soup.findAll("h3")
-#print(product_page)
+
 
 prod_url = soup.select("h3")
 for link in prod_url:
