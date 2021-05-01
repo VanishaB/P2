@@ -21,7 +21,7 @@ for image in images:
 	link = image['src']
 	print(name,link)
 	
-	
+
 	with open(name + '.jpg') as f:
 		im = requests.get(link)
 		f.write(im.content)
