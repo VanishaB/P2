@@ -14,12 +14,12 @@ if response.ok:
 
 
 	
-	ol=soup.findAll("ol")
-	for li in ol:
-		prod=li.findAll("article")
-		f_prod=li.findAll("div")
-	print(prod)
-	print(f_prod)
+ol=soup.findAll("ol")
+for li in ol:
+	prod=li.findAll("article")
+	f_prod=li.findAll("div")
+print(prod.text)
+print(f_prod.text)
 
 
 

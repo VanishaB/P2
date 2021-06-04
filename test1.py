@@ -1,5 +1,6 @@
 import requests 
 from bs4 import BeautifulSoup
+import csv
 
 url = 'http://books.toscrape.com/catalogue/tipping-the-velvet_999/index.html'
 response = requests.get(url)
@@ -59,12 +60,23 @@ prod_url = soup.select("h3")
 for link in prod_url:
     print(link.a["href"])
 
+"""
+
+"""
 
 
+import csv
+with open('files.csv','w',newline='') as fichiercsv:
+	writer=csv.writer(fichiercsv)
+	writer.writerow(['UPC', 'Price (excl. tax)','Product Type','Price (incl. tax)','tax' ,'Availability','Number of reviews',])
+	writer.writerow(['90fa61229261140a', 'Â£53.74', 'Books', 'Â£53.74', 'Â£0.00', 'In stock (20 available)','0'])
+	writer.writerow(['URL'])
 
 
-
-
+with open('files.csv', newline='') as csvfile:
+	reader= csv.DictReader(csvfile)
+	for row in reader:
+		print(row)
 
 
 

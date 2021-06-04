@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-url0 = "http://books.toscrape.com/catalogue/category/books/fantasy_19/"
+url0 = "http://books.toscrape.com/catalogue/category/books_1/"
 index = "index.html"  
 pages = []
 lien = True
@@ -29,12 +29,14 @@ while lien == True:
 			count += 1
 		else:
 			lien = False
+
 	response = requests.get(url)
 	if response.ok:
 		soup = BeautifulSoup(response.text, 'html.parser')
-		prod_url = soup.select("h3")
-		for link in prod_url:
-			print(link.a["href"])
+		image_url = soup.find("img")
+		print(image_url)
 
-"""url = "http://books.toscrape.com/catalogue/category/books/fantasy_19/" +str(page)
-"""
+
+
+
+
